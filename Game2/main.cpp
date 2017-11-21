@@ -18,16 +18,16 @@ int main(void) {
 
 			if (event.type == sf::Event::KeyPressed) {
 				if (event.key.code == sf::Keyboard::Up) {
-					shape.move(sf::Vector2f(0, -5));
+					shape.move(sf::Vector2f(0, -7));
 				}
 				if (event.key.code == sf::Keyboard::Right) {
-					shape.move(sf::Vector2f(5, 0));
+					shape.move(sf::Vector2f(7, 0));
 				}
 				if (event.key.code == sf::Keyboard::Down) {
-					shape.move(sf::Vector2f(0, 5));
+					shape.move(sf::Vector2f(0, 7));
 				}
 				if (event.key.code == sf::Keyboard::Left) {
-					shape.move(sf::Vector2f(-5, 0));
+					shape.move(sf::Vector2f(-7, 0));
 				}
 			}
 		}
