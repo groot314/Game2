@@ -23,6 +23,7 @@ int main(void) {
 
 		}
 		asteroid.movement();//asteroid movement
+		asteroid.checkCollision(player,window);
 
 		window.clear();
 		window.draw(player);

@@ -6,6 +6,27 @@ public:
 	Asteroid(sf::RenderWindow & window) : CircleShape(20){
 		this->setFillColor(sf::Color::Green);
 
+		setPos(window);
+
+
+	};
+
+	void movement() {
+		this->move(xMovements*.075, yMovements*.075);
+	}
+
+	bool checkCollision(Player player, sf::RenderWindow & window) {
+		if (this->getGlobalBounds().intersects(player.getGlobalBounds())) {
+			this->setPos(window);
+
+			return true;
+		}
+
+		return false;
+	}
+
+private:
+	void setPos(sf::RenderWindow & window) {
 		yMovements = 0;
 		xMovements = 0;
 
@@ -27,14 +48,7 @@ public:
 			this->setPosition(sf::Vector2f(window.getSize().x + -10, rand() % window.getSize().y));
 			xMovements = -1;
 		}
-
-	};
-
-	void movement() {
-		this->move(xMovements*.075, yMovements*.075);
 	}
-
-private:
 	int xMovements;
 	int yMovements;
 
