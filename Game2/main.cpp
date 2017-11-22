@@ -1,12 +1,10 @@
 #include <SFML\Graphics.hpp>
+#include "player.h"
 
 int main(void) {
 
 	sf::RenderWindow window(sf::VideoMode(600, 600), "Test!");
-	sf::RectangleShape shape;
-	shape.setSize(sf::Vector2f(100, 100));
-	shape.setFillColor(sf::Color::Blue);
-	shape.setPosition(sf::Vector2f(300, 300));
+	Player player;
 
 	while (window.isOpen())
 	{
@@ -16,24 +14,11 @@ int main(void) {
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			if (event.type == sf::Event::KeyPressed) {
-				if (event.key.code == sf::Keyboard::Up) {
-					shape.move(sf::Vector2f(0, -7));
-				}
-				if (event.key.code == sf::Keyboard::Right) {
-					shape.move(sf::Vector2f(7, 0));
-				}
-				if (event.key.code == sf::Keyboard::Down) {
-					shape.move(sf::Vector2f(0, 7));
-				}
-				if (event.key.code == sf::Keyboard::Left) {
-					shape.move(sf::Vector2f(-7, 0));
-				}
-			}
+			player.control(event);
 		}
 
 		window.clear();
-		window.draw(shape);
+		window.draw(player);
 		window.display();
 	}
 
