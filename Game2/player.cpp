@@ -1,6 +1,6 @@
 #include "player.h"
 
-void Player::control(sf::Event event)
+void Player::control(sf::Event & event)
 {
 
 	if (event.type == sf::Event::KeyPressed) {

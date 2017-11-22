@@ -1,10 +1,15 @@
 #include <SFML\Graphics.hpp>
 #include "player.h"
+#include "asteroid.h"
 
 int main(void) {
 
-	sf::RenderWindow window(sf::VideoMode(600, 600), "Test!");
+	srand(time(NULL));//random
+
+	sf::RenderWindow window(sf::VideoMode(960, 720), "Test!");
 	Player player;
+	Asteroid asteroid(window);
+
 
 	while (window.isOpen())
 	{
@@ -14,11 +19,12 @@ int main(void) {
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			player.control(event);
+			player.control(event);//player controls
 		}
 
 		window.clear();
 		window.draw(player);
+		window.draw(asteroid);
 		window.display();
 	}
 

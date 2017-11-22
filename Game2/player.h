@@ -6,10 +6,10 @@ public:
 	Player() {
 		this->setSize(sf::Vector2f(100, 100));
 		this->setFillColor(sf::Color::Blue);
-		this->setPosition(sf::Vector2f(300, 300));
+		this->setPosition(sf::Vector2f(250, 250));
 	}
 
-	void control(sf::Event event);
+	void control(sf::Event & event);
 
 private:
 };
