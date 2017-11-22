@@ -20,7 +20,9 @@ int main(void) {
 				window.close();
 
 			player.control(event);//player controls
+
 		}
+		asteroid.movement();//asteroid movement
 
 		window.clear();
 		window.draw(player);
