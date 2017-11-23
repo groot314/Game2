@@ -1,4 +1,5 @@
 #include <SFML\Graphics.hpp>
+#include <vector>
 #include "player.h"
 #include "asteroid.h"
 
@@ -10,6 +11,12 @@ int main(void) {
 	Player player;
 	Asteroid asteroid(window);
 
+	std::vector<Asteroid*> asteroidVec;
+
+	for (int i = 0; i < 3; i++) {
+		Asteroid *newAsteroid = new Asteroid(window);
+		asteroidVec.push_back(newAsteroid);
+	}
 
 	while (window.isOpen())
 	{
@@ -23,13 +30,17 @@ int main(void) {
 
 		}
 		player.control(event);//player controls
-		asteroid.movement();//asteroid movement
-		asteroid.checkCollision(player,window);
-		asteroid.checkBounds(window);
+		for (int i = 0; i < asteroidVec.size(); i++) {
+			asteroidVec[i]->movement();//asteroid movement
+			asteroidVec[i]->checkCollision(player, window);
+			asteroidVec[i]->checkBounds(window);
+		}
 
 		window.clear();
 		window.draw(player);
-		window.draw(asteroid);
+		for (int i = 0; i < asteroidVec.size(); i++) {
+			window.draw(*asteroidVec[i]);
+		}
 		window.display();
 	}
 
