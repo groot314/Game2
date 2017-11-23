@@ -2,19 +2,18 @@
 
 void Player::control(sf::Event & event)
 {
+	double speed = .15;
 
-	if (event.type == sf::Event::KeyPressed) {
-		if (event.key.code == sf::Keyboard::Up) {
-			this->move(sf::Vector2f(0, -7));
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			this->move(sf::Vector2f(0, -1*speed));
 		}
-		if (event.key.code == sf::Keyboard::Right) {
-			this->move(sf::Vector2f(7, 0));
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			this->move(sf::Vector2f(1*speed, 0));
 		}
-		if (event.key.code == sf::Keyboard::Down) {
-			this->move(sf::Vector2f(0, 7));
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			this->move(sf::Vector2f(0, 1*speed));
 		}
-		if (event.key.code == sf::Keyboard::Left) {
-			this->move(sf::Vector2f(-7, 0));
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			this->move(sf::Vector2f(-1*speed, 0));
 		}
-	}
 }

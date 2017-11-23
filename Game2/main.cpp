@@ -19,9 +19,10 @@ int main(void) {
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			player.control(event);//player controls
+			
 
 		}
+		player.control(event);//player controls
 		asteroid.movement();//asteroid movement
 		asteroid.checkCollision(player,window);
 		asteroid.checkBounds(window);
