@@ -25,6 +25,29 @@ public:
 		return false;
 	}
 
+	bool checkBounds(sf::RenderWindow & window) {
+		int bound = 50;
+
+		if (this->getPosition().x < -bound) {//left
+			this->setPos(window);
+			return true;
+		}
+		if (this->getPosition().y < -bound) {//top
+			this->setPos(window);
+			return true;
+		}
+		if (this->getPosition().x > 50 + window.getSize().x) {//right
+			this->setPos(window);
+			return true;
+		}
+		if (this->getPosition().y > 50 + window.getSize().y) {//bottom
+			this->setPos(window);
+			return true;
+		}
+
+		return false;
+	}
+
 private:
 	void setPos(sf::RenderWindow & window) {
 		yMovements = 0;
