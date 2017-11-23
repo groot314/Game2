@@ -2,6 +2,7 @@
 #include <vector>
 #include "player.h"
 #include "asteroid.h"
+#include "score.h"
 
 int main(void) {
 
@@ -10,6 +11,7 @@ int main(void) {
 	sf::RenderWindow window(sf::VideoMode(960, 720), "Test!");
 	Player player;
 	Asteroid asteroid(window);
+	Score score({50,50});
 
 	std::vector<Asteroid*> asteroidVec;
 
@@ -32,7 +34,9 @@ int main(void) {
 		player.control(event);//player controls
 		for (int i = 0; i < asteroidVec.size(); i++) {
 			asteroidVec[i]->movement();//asteroid movement
-			asteroidVec[i]->checkCollision(player, window);
+			if (asteroidVec[i]->checkCollision(player, window)) {
+				score.setScore(score.getScore() + 1);
+			}
 			asteroidVec[i]->checkBounds(window);
 		}
 
@@ -41,6 +45,7 @@ int main(void) {
 		for (int i = 0; i < asteroidVec.size(); i++) {
 			window.draw(*asteroidVec[i]);
 		}
+		window.draw(score);
 		window.display();
 	}
 
