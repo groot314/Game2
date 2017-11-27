@@ -4,7 +4,7 @@ class Asteroid : public sf::CircleShape{
 
 public:
 	Asteroid(sf::RenderWindow & window) : CircleShape(20){
-		this->setFillColor(sf::Color::Green);
+		this->setFillColor(sf::Color::Red);
 
 		setPos(window);
 
